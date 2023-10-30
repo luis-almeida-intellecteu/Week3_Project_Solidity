@@ -27,7 +27,7 @@ function Block({ latestBlock, setLatestBlock, block, setBlock, blockNumber, setB
 
       var parsedNumber = parseInt(number);
       var fullBlock = "";
-      var blockOfTransactions = "";
+      var blockOfTransactions = {transactions:[]};;
 
       if (!isNaN(parsedNumber)) 
       {
@@ -41,14 +41,13 @@ function Block({ latestBlock, setLatestBlock, block, setBlock, blockNumber, setB
       console.log("Latest: " + latestBlock + " , " + typeof(latestBlock));
 
       const listItems = blockOfTransactions.transactions.map(
-        transaction => <li><Collapsible content={JSON.stringify(transaction)} title={"HASH: " + JSON.stringify(transaction.hash)}></Collapsible></li>);
+        (transaction, index) => <li key={index} ><Collapsible content={JSON.stringify(transaction)} title={"HASH: " + JSON.stringify(transaction.hash)}></Collapsible></li>);
 
       console.log(listItems);
     
 
       setBlock(JSON.stringify(fullBlock));
       setBlockWithTransactions(listItems);
-      //setBlockWithTransactions(JSON.stringify(blockOfTransactions.transactions));
     }
    
     return (
