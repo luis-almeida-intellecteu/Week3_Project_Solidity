@@ -43,9 +43,6 @@ function Block({ latestBlock, setLatestBlock, block, setBlock, blockNumber, setB
       const listItems = blockOfTransactions.transactions.map(
         (transaction, index) => <li key={index} ><Collapsible content={JSON.stringify(transaction)} title={"HASH: " + JSON.stringify(transaction.hash)}></Collapsible></li>);
 
-      console.log(listItems);
-    
-
       setBlock(JSON.stringify(fullBlock));
       setBlockWithTransactions(listItems);
     }
